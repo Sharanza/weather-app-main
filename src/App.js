@@ -1,16 +1,16 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import Search from './components/Search';
-import WeatherInfo from './components/WeatherInfo';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import Search from "./components/Search";
+import WeatherInfo from "./components/WeatherInfo";
 
 function App() {
-  const [search, setSearch] = useState('Ljubljana');
+  const [search, setSearch] = useState("Newcastle Upon Tyne");
   const [daily, setDaily] = useState();
   const [allData, setAll] = useState();
 
   const dateBins = {};
   const nBins = 6;
-  const apiKey = 'af533ff5de5f96b4a9d160f95a8c26ae';
+  const apiKey = "af533ff5de5f96b4a9d160f95a8c26ae";
   // function to group by day, as I have 3hour timestamps of weather
   const groupByDate = async () => {
     const today = new Date();
@@ -30,10 +30,10 @@ function App() {
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${search}&units=metric&appid=${apiKey}`,
-        { mode: 'cors' }
+        { mode: "cors" }
       );
       if (response.status >= 400 && response.status < 600) {
-        throw Error('Couldnt find the city');
+        throw Error("Couldnt find the city");
       }
       const find = await response.json();
 
